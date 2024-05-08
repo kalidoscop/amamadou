@@ -16,7 +16,7 @@ pipeline{
         stage('Initialisation') {
             steps {
                 sh "make clean"
-                sh "make venv"
+                sh "make venv" 
                 sh "make install"
             }
 
