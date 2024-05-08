@@ -19,7 +19,11 @@ pipeline{
                 sh "make venv" 
                 sh "make install"
             }
-
+        }
+        stage('Build docker image') {
+            steps {
+                sh "docker ps -a"
+            }
         }
     }     
 }
