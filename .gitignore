@@ -1,1 +1,3 @@
-etudiants.txt
+venv/
+.dockerignore
+README.md
