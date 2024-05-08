@@ -22,7 +22,7 @@ pipeline{
         }
         stage('Build docker image') {
             steps {
-                sh "docker ps -a"
+                sh "docker ps -a" 
                 sh "docker build -t default_image ."
             }
         }
