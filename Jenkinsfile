@@ -13,5 +13,13 @@ pipeline{
                 sh "cat /etc/os-release"
             }
         }
+        stage('Initialisation') {
+            steps {
+                sh "make clean"
+                sh "make venv"
+                sh "make install"
+            }
+
+        }
     }     
 }
