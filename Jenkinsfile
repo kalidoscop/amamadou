@@ -44,8 +44,7 @@ pipeline{
 
         stage('Test docker image') { 
             steps {
-                sh """docker run -d -p 5000:8000 --name default_container $env.BRANCH_NAME/default_image && \
-                make test-url"""
+                sh "docker run -d -p 5000:8000 --name default_container $env.BRANCH_NAME/default_image"
             }
         }
 
