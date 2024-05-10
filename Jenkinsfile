@@ -38,7 +38,7 @@ pipeline{
         stage('Test docker image') { 
             steps {
                 sh "docker run -d -p 5000:8000 --name default_container default_image"
-                sh "make test url"
+                sh "make test-url"
             }
         }
 
