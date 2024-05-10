@@ -27,4 +27,4 @@ test:
 	venv/bin/pytest -x --color=yes
 
 test-url:
-	curl localhost:5000 
+	curl -s localhost:5000 
