@@ -5,4 +5,4 @@ def test_answer():
 def test_bool():
     a = 5
     b = 10
-    assert a+b == 12
+    assert a+b == 15
