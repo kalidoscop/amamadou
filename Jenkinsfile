@@ -31,9 +31,7 @@ pipeline{
             steps {
                 sh "docker ps -a" 
                 sh "echo $env.BRANCH_NAME"
-                sh "echo ${env.BRANCH_NAME}"
-                sh "echo ${BRANCH_NAME}"
-                sh "echo ${BRANCH_NAME}"
+                sh "printenv"
                 sh "docker build -t $env.BRANCH_NAME/default_image ."
             }
         }
