@@ -2,6 +2,10 @@ pipeline{
 
     agent any
 
+    environment {
+     BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+    }
+
     stages{
         stage('Echo') {
             steps{
@@ -30,7 +34,8 @@ pipeline{
         stage('Build docker image') {
             steps {
                 sh "docker ps -a" 
-                sh "echo $env.BRANCH_NAME"
+                sh "echo $BRANCH_NAME"
+                sh "echo $env.GIT_BRANCH"
                 sh "printenv"
                 sh "docker build -t $env.BRANCH_NAME/default_image ."
             }
