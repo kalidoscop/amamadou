@@ -22,3 +22,9 @@ venv: clean
 
 install:
 	venv/bin/pip install -r requirements.txt
+
+test:
+	venv/bin/pytest -x --color=yes
+
+test-url:
+	curl -Is localhost:5000 | head -n 1
