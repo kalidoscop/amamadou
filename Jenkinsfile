@@ -28,12 +28,13 @@ pipeline{
         }
         stage('Test docker image') {
             steps {
-                sh "docker run default_image -p 8000:8000 --name default_container"
+                sh "docker run -p 8000:8000 --name default_container default_image"
             }
         }
         stage('Cleanup ') {
             steps {
                 sh "docker container stop default_container"
+                sh "docker container rm default_container"
             }
         }
     }     
