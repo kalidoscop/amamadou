@@ -50,7 +50,7 @@ pipeline{
             }
         }
 
-        stage("Push image to Docker Hub")
+        stage("Push image to Docker Hub"){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
@@ -59,6 +59,6 @@ pipeline{
                     """
                 }
             }
-
+        }
     }     
 }
