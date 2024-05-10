@@ -61,7 +61,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
-                    docker login  --username $USERNAME --password $PASSWORD
+                    docker login  --username $USERNAME --password $PASSWORD && \
                     docker push ${BRANCH_NAME}/default_image
                     """
                 }
