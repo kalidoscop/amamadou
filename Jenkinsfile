@@ -30,7 +30,7 @@ pipeline{
 
         stage('Test docker image') { 
             steps {
-                sh "docker run -p 8000:8000 --name default_container default_image"
+                sh "docker run -d -p 5000:8000 --name default_container default_image"
             }
         }
 
