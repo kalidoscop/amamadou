@@ -67,11 +67,12 @@ pipeline{
                 }
             }
         }
-        post{
-            always {
-                sh "docker container stop default_container"
-                sh "docker container rm default_container" 
+    } 
+
+    post{
+        always {
+            sh "docker container stop default_container"
+            sh "docker container rm default_container" 
             }
-        }
-    }     
+    }    
 }
