@@ -30,14 +30,14 @@ pipeline{
         stage('Build docker image') {
             steps {
                 sh "docker ps -a" 
-                sh "docker build -t default_image ."
+                sh "docker build -t $BRANCH_NAME/default_image ."
             }
         }
 
 
         stage('Test docker image') { 
             steps {
-                sh "docker run -d -p 5000:8000 --name default_container default_image"
+                sh "docker run -d -p 5000:8000 --name default_container $BRANCH_NAME/default_image"
                 sh "make test-url"
             }
         }
@@ -49,6 +49,16 @@ pipeline{
                 sh "docker container rm default_container" 
             }
         }
+
+        stage("Push image to Docker Hub")
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
+                    sh """
+                    docker login  --username $USERNAME --password $PASSWORD
+                    docker push $BRANCH_NAME/default_image
+                    """
+                }
+            }
 
     }     
 }
