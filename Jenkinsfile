@@ -61,7 +61,7 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                     docker login  --username $USERNAME --password $PASSWORD && \
-                    docker tag $env.BRANCH_NAME/default_image:latest master:$env.BRANCH_NAME/default_image && \
+                    
                     docker push hervlokossou/master:${BRANCH_NAME}/default_image
                     """
                 }
