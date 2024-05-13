@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Echo') {
             steps{
-                sh "echo Je suis là ${car}"
+                sh "echo Je suis là"
                 }
             }
         stage('Show Release') {
@@ -58,10 +58,10 @@ pipeline{
 
         stage("Push image to Docker Hub"){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
+                withCredentials([usernamePassword(credentialsId: 'DOCKER_CREDS_AMAMADOU', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
                     sh """
                     docker login  --username $USERNAME --password $PASSWORD && \
-                    docker push hervlokossou/${BRANCH_NAME}/default_image:latest
+                    docker push raonisse/${BRANCH_NAME}/default_image:latest
                     """
                 }
             }
