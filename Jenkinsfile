@@ -65,9 +65,9 @@ pipeline{
                 }
             }
         }
-    } 
-    post {
-            allways {
+    }
+    post{
+            allways{
                 sh "docker container stop default_container_$env.BRANCH_NAME"
                 sh "docker container rm default_container_$env.BRANCH_NAME" 
             }
