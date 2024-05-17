@@ -6,7 +6,7 @@ pipeline{
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
     }
 
-    stages{
+    stages{ 
         stage('Echo') {
             steps{
                 sh "echo Je suis là-bas !"
