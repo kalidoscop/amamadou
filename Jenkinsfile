@@ -44,6 +44,8 @@ pipeline{
 
         stage('Test docker image') { 
             steps {
+                sh "docker container stop default_container_$env.BRANCH_NAME"
+                sh "docker container rm default_container_$env.BRANCH_NAME"
                 sh "docker run -d -p 5030:8000 --name default_container_$env.BRANCH_NAME raonisse/${BRANCH_NAME}_default_image"
             }
         }
